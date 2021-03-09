@@ -3,12 +3,11 @@ const chalk = require('chalk')
 const NodeTtl = require('node-ttl')
 const ttl = new NodeTtl()
 
-const timeStamp = Math.round(+new Date()/1000);
-
 // Add a note
 const addNote = (title, body, TTL=5000) => {
     const notes = loadNotes();
     const duplicateNotes = notes.find((note) => note.title === title)
+    const timeStamp = Math.round(+new Date()/1000);
 
     if(!duplicateNotes) {
         notes.push({
@@ -28,6 +27,7 @@ const addNote = (title, body, TTL=5000) => {
 
 // Remove a note
 const removeNotes = (title) => {
+    const timeStamp = Math.round(+new Date()/1000);
     const notes = loadNotes()
     const updatedNotes = notes.filter( (note) => note.title !== title)
     const findNote = notes.filter( (note) => note.title === title)
@@ -47,6 +47,7 @@ const removeNotes = (title) => {
 
 // Read a note
 const readNote = (title) => {
+    const timeStamp = Math.round(+new Date()/1000);
     const notes = loadNotes()
     const note = notes.find((note) => note.title === title)
 
